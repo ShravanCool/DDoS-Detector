@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Dataset Description
+{% endblock %}
+
+{% block url_list %}
+<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link active" href="{% url 'dataset' %}">Dataset Description</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'testing' %}">Testing page</a></li>
+{% endblock %}
+
+{% block h4_head %}
+Dataset Description
+{% endblock %}
+
+{% block para1 %}
+<p>The dataset used in the training of this model can be viewed and downloaded from <a href="https://www.kaggle.com/wardac/applicationlayer-ddos-dataset">here</a>. This dataset is created by simulating an application-layer DDoS attack in a virtual environment, and various features such as flow duration, total forward and backward packets, length of forward and backward packets, various statistical values of header lengths such as mean and variance etc. were collected in order to train the model.
+
+A total of 77 features are used to classify the model among these three labels-
+<ul>
+ <li>Benign(legit)</li>
+ <li>DDoS Solaris</li>
+ <li>DDoS Hulk</li>
+</ul>
+</p>
+{% endblock %}
+
+{% block para2 %}
+ <h3>Benign</h3>
+ 	<p>Begign or legit represents normal network traffic and flow, signifying that the network flow is normal and safe, caused because of genuine users.</p>
+ <h3>DDoS Solaris</h3>
+ <p>Slowloris is a denial-of-service attack program which allows an attacker to overwhelm a targeted server by opening and maintaining many simultaneous HTTP connections between the attacker and the target.</p>
+ <h3>DDoS Hulk</h3>
+ 	<p>HULK flood, is a DDoS attack named by its creators “HTTP Unbearable Load King” is similar to an HTTP flood and is designed to overwhelm web servers’ resources by continuously requesting single or multiple URL’s from many source attacking machines. HULK flood differs from most available DDoS attack tools which produced predictable repeated patterns that could easily be mitigated. The principle behind the HULK flood is that a unique pattern is generated at each and every request, with the intention of increasing the load on the servers as well as evading any intrusion detection and prevention systems.</p>
+{% endblock %}

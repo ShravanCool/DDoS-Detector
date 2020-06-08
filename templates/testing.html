@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Classifier
+{% endblock %}
+
+{% block url_list %}
+<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'dataset' %}">Dataset Description</a></li>
+<li class="nav-item"><a class="nav-link active" href="{% url 'testing' %}">Testing page</a></li>
+{% endblock %}
+
+{% block h4_head %}
+Classifier Page
+{% endblock %}
+
+{% block h2_head1 %}
+	Check for DDoS attacks
+{% endblock %}
+
+{% block para1 %}
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="btn btn-success">Check</button>
+</form>
+{% endblock %}
+
+{% block h2_head2 %}
+	Result-
+{% endblock %}
+
+{% block para2 %}
+<p>{% if messages %}
+	{% for message in messages %}
+	  {{ message }}
+	{% endfor %}
+   {% endif %}
+</p>
+{% endblock %}
+
+
+

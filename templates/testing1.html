@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Classifier
+{% endblock %}
+
+{% block url_list %}
+<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'dataset' %}">Dataset Description</a></li>
+<li class="nav-item"><a class="nav-link active" href="{% url 'testing' %}">Testing page</a></li>
+{% endblock %}
+
+{% block h4_head %}
+Classifier Page
+{% endblock %}
+
+{% block h2_head1 %}
+	Check for DDoS attacks
+{% endblock %}
+
+{% block para1 %}
+<form method="post">
+	{% csrf_token %}
+	<!-- {{ form.as_p }} -->
+	<div class="form-group">
+      <label for="id_Destination_Port">Destination_Port</label>
+      <input type="text" class="form-control" id="id_Destination_Port" name="Destination_Port">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_Duration">Flow_Duration</label>
+      <input type="text" class="form-control" id="id_Flow_Duration" name="Flow_Duration">
+    </div>
+    <div class="form-group">
+      <label for="id_Total_Fwd_Packets">Total_Fwd_Packets</label>
+      <input type="text" class="form-control" id="id_Total_Fwd_Packets" name="Total_Fwd_Packets">
+    </div>
+    <div class="form-group">
+      <label for="id_Total_Backward_Packets">Total_Backward_Packets</label>
+      <input type="text" class="form-control" id="id_Total_Backward_Packets" name="Total_Backward_Packets">
+    </div>
+    <div class="form-group">
+      <label for="id_Total_Length_of_Fwd_Packets">Total_Length_of_Fwd_Packets</label>
+      <input type="text" class="form-control" id="id_Total_Length_of_Fwd_Packets" name="Total_Length_of_Fwd_Packets">
+    </div>
+    <div class="form-group">
+      <label for="id_Total_Length_of_Bwd_Packets">Total_Length_of_Bwd_Packets</label>
+      <input type="text" class="form-control" id="id_Total_Length_of_Bwd_Packets" name="Total_Length_of_Bwd_Packets">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_Packet_Length_Max">Fwd_Packet_Length_Max</label>
+      <input type="text" class="form-control" id="id_Fwd_Packet_Length_Max" name="Fwd_Packet_Length_Max">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_Packet_Length_Min">Fwd_Packet_Length_Min</label>
+      <input type="text" class="form-control" id="id_Fwd_Packet_Length_Min" name="Fwd_Packet_Length_Min">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_Packet_Length_Mean">Fwd_Packet_Length_Mean</label>
+      <input type="text" class="form-control" id="id_Fwd_Packet_Length_Mean" name="Fwd_Packet_Length_Mean">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_Packet_Length_Std">Fwd_Packet_Length_Std</label>
+      <input type="text" class="form-control" id="id_Fwd_Packet_Length_Std" name="Fwd_Packet_Length_Std">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_Packet_Length_Max">Bwd_Packet_Length_Max</label>
+      <input type="text" class="form-control" id="id_Bwd_Packet_Length_Max" name="Bwd_Packet_Length_Max">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_Packet_Length_Min">Bwd_Packet_Length_Min</label>
+      <input type="text" class="form-control" id="id_Bwd_Packet_Length_Min" name="Bwd_Packet_Length_Min">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_Packet_Length_Mean">Bwd_Packet_Length_Mean</label>
+      <input type="text" class="form-control" id="id_Bwd_Packet_Length_Mean" name="Bwd_Packet_Length_Mean">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_Packet_Length_Std">Bwd_Packet_Length_Std</label>
+      <input type="text" class="form-control" id="id_Bwd_Packet_Length_Std" name="Bwd_Packet_Length_Std">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_Bytes_Sec">Flow_Bytes_Sec</label>
+      <input type="text" class="form-control" id="id_Flow_Bytes_Sec" name="Flow_Bytes_Sec">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_Packets_Sec">Flow_Packets_Sec</label>
+      <input type="text" class="form-control" id="id_Flow_Packets_Sec" name="Flow_Packets_Sec">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_IAT_Mean">Flow_IAT_Mean</label>
+      <input type="text" class="form-control" id="id_Flow_IAT_Mean" name="Flow_IAT_Mean">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_IAT_Std">Flow_IAT_Std</label>
+      <input type="text" class="form-control" id="id_Flow_IAT_Std" name="Flow_IAT_Std">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_IAT_Max">Flow_IAT_Max</label>
+      <input type="text" class="form-control" id="id_Flow_IAT_Max" name="Flow_IAT_Max">
+    </div>
+    <div class="form-group">
+      <label for="id_Flow_IAT_Min">Flow_IAT_Min</label>
+      <input type="text" class="form-control" id="id_Flow_IAT_Min" name="Flow_IAT_Min">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_IAT_Total">Fwd_IAT_Total</label>
+      <input type="text" class="form-control" id="id_Fwd_IAT_Total" name="Fwd_IAT_Total">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_IAT_Mean">Fwd_IAT_Mean</label>
+      <input type="text" class="form-control" id="id_Fwd_IAT_Mean" name="Fwd_IAT_Mean">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_IAT_Std">Fwd_IAT_Std</label>
+      <input type="text" class="form-control" id="id_Fwd_IAT_Std" name="Fwd_IAT_Std">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_IAT_Max">Fwd_IAT_Max</label>
+      <input type="text" class="form-control" id="id_Fwd_IAT_Max" name="Fwd_IAT_Max">
+    </div>
+    <div class="form-group">
+      <label for="id_Fwd_IAT_Min">Fwd_IAT_Min</label>
+      <input type="text" class="form-control" id="id_Fwd_IAT_Min" name="Fwd_IAT_Min">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_IAT_Total">Bwd_IAT_Total</label>
+      <input type="text" class="form-control" id="id_Bwd_IAT_Total" name="Bwd_IAT_Total">
+    </div>
+    <div class="form-group">
+      <label for="id_Bwd_IAT_Mean">Bwd_IAT_Mean</label>
+      <input type="text" class="form-control" id="id_Bwd_IAT_Mean" name="Bwd_IAT_Mean">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+    <div class="form-group">
+      <label for="id_subject">Subject</label>
+      <input type="text" class="form-control" id="id_subject" name="subject">
+    </div>
+
+
+	<button type="submit" class="btn btn-success">Check</button>
+</form>
+{% endblock %}
+
+{% block h2_head2 %}
+	Result-
+{% endblock %}
+
+{% block para2 %}
+<p>The traffic is predicted to be a type of {{ prediction }}</p>
+{% endblock %}
