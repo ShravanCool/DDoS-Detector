@@ -28,4 +28,9 @@ python manage.py runserver
 ```
 
 Now, open the below mentioned link in a new tab in your browser-
+
 [https://127.0.0.1:8000](https://127.0.0.1:8000)
+
+**For more details on the ML algorithms used to train the model, see the following mentioned link:**
+
+[Link to the ipnb file](https://github.com/ShravanCool/Software_proj)
