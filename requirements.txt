@@ -1,6 +1,6 @@
 asgiref==3.2.7
 Django==3.1.14
-djangorestframework==3.11.2
+djangorestframework==3.15.2
 joblib==1.2.0
 numpy==1.22.0
 pandas==1.0.3
